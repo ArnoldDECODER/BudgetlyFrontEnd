@@ -1,0 +1,839 @@
+/* index.css */
+
+/* === Global Styles (Shared Across Pages) === */
+/* Reset and common utilities */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e293b; /* Dark slate grey background */
+  color: #e2e8f0; /* Light grey text */
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #4a5568; /* Darker border for contrast */
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #2d3748; /* Darker input background */
+  color: #e2e8f0; /* Light grey text */
+}
+
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #4a5568;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #2d3748;
+  color: #e2e8f0;
+  resize: vertical;
+}
+
+select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #4a5568;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+/* === Header Styles (Navbar) === */
+header {
+  background-color: #1e293b; /* Dark background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e2e8f0; /* Light grey text */
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-content,
+.logout-button {
+  display: flex;
+  align-items: center;
+  background-color: #2d3748;
+  color: #e2e8f0; /* Light grey text */
+  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-item-content .icon,
+.logout-button .icon {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.nav-item-content .text,
+.logout-button .text {
+  white-space: nowrap;
+}
+
+.nav-item-content:hover,
+.nav-item-content.active {
+  background-color: #2d3748; /* Darker grey hover */
+  color: #3b82f6; /* Soft blue hover */
+}
+
+.logout-button:hover {
+  background-color: #2d3748; /* Darker grey hover */
+  color: #ef4444; /* Red hover for logout */
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #4a5568; /* Darker tooltip background */
+  color: #e2e8f0; /* Light grey text */
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4a5568 transparent;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .logo-area {
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-icons {
+    width: 100%;
+    justify-content: space-around;
+    gap: 10px;
+  }
+
+  .nav-item-content,
+  .logout-button {
+    flex-direction: column;
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+
+  .nav-item-content .icon,
+  .logout-button .icon {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+
+  .tooltip-text {
+    bottom: auto;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+  }
+}
+
+/* === Auth Page Styles (Signup/Login) === */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1e293b; /* Dark background */
+}
+
+.auth-card {
+  background: #2d3748; /* Darker grey card */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 320px;
+}
+
+.auth-card h2 {
+  margin-bottom: 1.25rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #22c55e; /* Green button */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background: #16a34a; /* Darker green on hover */
+}
+
+.signup-text {
+  margin-top: 1rem;
+  font-size: 14px;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.signup-link {
+  color: #3b82f6; /* Soft blue link */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* === OTP Page Styles === */
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1e293b; /* Dark background */
+}
+
+.otp-card {
+  background: #2d3748; /* Darker grey card */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.otp-card h2 {
+  margin-bottom: 0.5rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.otp-card p {
+  font-size: 14px;
+  color: #e2e8f0; /* Light grey text */
+  margin-bottom: 1.25rem;
+}
+
+.verify-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #22c55e; /* Green button */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+}
+
+.verify-button:hover {
+  background-color: #059669; /* Darker green on hover */
+}
+
+.countdown-text {
+  margin-top: 1rem;
+  color: #e2e8f0; /* Light grey text */
+  font-size: 14px;
+}
+
+.resend-button {
+  background: none;
+  border: none;
+  color: #3b82f6; /* Soft blue link */
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* === Analytics Page Styles === */
+.analytics-container {
+  padding: 20px;
+  background-color: #1e293b; /* Dark background */
+  color: #ffffff; /* White text for all content */
+}
+
+.analytics-container h2.section-title {
+  color: #ffffff; /* White title */
+  margin-bottom: 1.25rem;
+}
+
+.chart-card {
+  background: #2d3748; /* Darker grey card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #ffffff; /* White text for card content */
+}
+
+.chart-card canvas {
+  max-height: 400px;
+}
+
+/* === Homepage Styles === */
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Fill the whole page */
+  background-color: #1e293b; /* Dark background */
+  padding: 20px;
+}
+
+.homepage-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.greeting {
+  font-size: 2rem;
+  font-weight: bold; /* Bold greeting */
+  margin-bottom: 0.5rem;
+}
+
+.welcome-message {
+  font-size: 1.2rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.welcome-message strong {
+  font-weight: bold; /* Bold "Budgetly" */
+}
+
+.dashboard-content {
+  width: 100%;
+  max-width: 800px; /* Limit content width for readability */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-widget {
+  background: #2d3748; /* Darker grey card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.widget-title {
+  font-size: 1.5rem;
+  font-weight: bold; /* Bold widget titles */
+  margin-bottom: 1rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.overview-summary p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.income-text,
+.expense-text,
+.net-savings-text {
+  font-weight: bold; /* Bold amounts */
+  color: #22c55e; /* Green for income, expense, net savings */
+}
+
+.income-text { color: #22c55e; } /* Green for income */
+.expense-text { color: #ef4444; } /* Red for expenses */
+.net-savings-text { color: #3b82f6; } /* Blue for net savings */
+
+.placeholder-text {
+  font-size: 1rem;
+  color: #a0aec0; /* Slightly lighter grey for placeholders */
+  margin-top: 1rem;
+}
+
+.recent-transactions-list,
+.goals-progress-list {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-item,
+.goal-progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: #2d3748; /* Darker grey */
+  border-radius: 6px;
+}
+
+.transaction-item.expense .transaction-item-amount {
+  color: #ef4444; /* Red for expense amounts */
+}
+
+.transaction-item-amount,
+.transaction-item-date {
+  font-weight: bold; /* Bold amounts and dates */
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #3b82f6; /* Blue progress bar */
+  border-radius: 5px;
+}
+
+.progress-percentage {
+  margin-left: 1rem;
+  font-weight: bold; /* Bold percentage */
+  color: #3b82f6; /* Blue percentage */
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    max-width: 100%;
+  }
+
+  .transaction-item,
+  .goal-progress-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .progress-bar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .progress-percentage {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* === Transactions Page Styles === */
+.transactions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Fill the whole page */
+  background-color: #1e293b; /* Dark background */
+  padding: 20px;
+}
+
+.transaction-card {
+  background: #2d3748; /* Darker grey card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px; /* Limit card width for readability */
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold; /* Bold section titles */
+  margin-bottom: 1.5rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left; /* Align labels and inputs to the left within form */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold; /* Bold labels */
+  margin-bottom: 0.5rem;
+}
+
+
+.submit-btn,
+.add-category-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #22c55e; /* Green button */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+}
+
+.submit-btn:hover,
+.add-category-btn:hover {
+  background: #16a34a; /* Darker green on hover */
+}
+
+.cancel-btn,
+.delete-category-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ef4444; /* Red button */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.cancel-btn:hover,
+.delete-category-btn:hover {
+  background: #dc2626; /* Darker red on hover */
+}
+
+.category-add-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.category-add-form input {
+  flex-grow: 1;
+}
+
+.current-categories {
+  text-align: left;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #4a5568; /* Slightly lighter grey for distinction */
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.category-item strong {
+  font-weight: bold; /* Bold category names */
+}
+
+.transaction-list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: #4a5568; /* Slightly lighter grey for distinction */
+  border-radius: 6px;
+}
+
+.list-item.income .transaction-amount {
+  color: #22c55e; /* Green for income */
+}
+
+.list-item.expense .transaction-amount {
+  color: #ef4444; /* Red for expenses */
+}
+
+.transaction-details,
+.transaction-amount,
+.transaction-actions {
+  flex: 1;
+  text-align: center;
+}
+
+.transaction-category,
+.transaction-notes,
+.transaction-date {
+  display: block;
+  font-weight: bold; /* Bold details */
+}
+
+.transaction-amount {
+  font-size: 1.2rem;
+  font-weight: bold; /* Bold amount */
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+}
+
+.edit-btn {
+  background: #3b82f6; /* Blue for edit */
+  color: #ffffff;
+}
+
+.edit-btn:hover {
+  background: #2563eb; /* Darker blue on hover */
+}
+
+.delete-btn {
+  background: #ef4444; /* Red for delete */
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: #dc2626; /* Darker red on hover */
+}
+
+.no-transactions {
+  padding: 1rem;
+  color: #a0aec0; /* Lighter grey for placeholder */
+}
+
+@media (max-width: 768px) {
+  .transaction-card {
+    max-width: 100%;
+  }
+
+  .list-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .transaction-details,
+  .transaction-amount,
+  .transaction-actions {
+    margin-bottom: 0.5rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .category-add-form {
+    flex-direction: column;
+  }
+
+  .category-add-form input,
+  .category-add-form button {
+    width: 100%;
+  }
+}
+
+/* === Goals Page Styles === */
+.goals-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Fill the whole page */
+  background-color: #1e293b; /* Dark background */
+  padding: 20px;
+}
+
+.goal-card {
+  background: #2d3748; /* Darker grey card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px; /* Limit card width for readability */
+  text-align: center;
+}
+
+.goal-section-title {
+  font-size: 1.8rem;
+  font-weight: bold; /* Bold section titles */
+  margin-bottom: 1.5rem;
+  color: #e2e8f0; /* Light grey text */
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left; /* Align labels and inputs to the left within form */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold; /* Bold labels */
+  margin-bottom: 0.5rem;
+}
+
+.goal-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #22c55e; /* Green button */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+}
+
+.goal-submit-btn:hover {
+  background: #16a34a; /* Darker green on hover */
+}
+
+.button-container {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.button-container button {
+  padding: 0.75rem 1.5rem;
+  background: #22c55e; /* Green button */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.button-container button:hover {
+  background: #16a34a; /* Darker green on hover */
+}
+
+.goal-list,
+.progress-list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-group-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: #4a5568; /* Slightly lighter grey for distinction */
+  border-radius: 6px;
+}
+
+.list-group-item strong {
+  font-weight: bold; /* Bold goal names */
+  margin-bottom: 0.5rem;
+}
+
+.goal-description {
+  font-size: 0.9rem;
+  color: #a0aec0; /* Lighter grey for notes */
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #3b82f6; /* Blue progress bar */
+  border-radius: 5px;
+}
+
+.progress-text {
+  margin-left: 1rem;
+  font-weight: bold; /* Bold progress percentage */
+  color: #3b82f6; /* Blue percentage */
+}
+
+.goal-status {
+  font-weight: bold; /* Bold status */
+  margin-top: 0.5rem;
+}
+
+.status-active { color: #22c55e; } /* Green for active */
+.status-completed { color: #10b981; } /* Darker green for completed */
+
+.no-goals,
+.no-progress {
+  padding: 1rem;
+  color: #a0aec0; /* Lighter grey for placeholder */
+}
+
+.progress-section-content {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .goal-card {
+    max-width: 100%;
+  }
+
+  .list-group-item {
+    text-align: center;
+  }
+
+  .progress-bar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .progress-text {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
