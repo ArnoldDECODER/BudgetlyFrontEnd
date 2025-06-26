@@ -45,3 +45,18 @@ The application uses React Router for client-side navigation, enabling smooth tr
 - Implement persistent storage for offline data using IndexedDB.
 - Add user role-based routing for admin features.
 
+# Budgetly - Financial Management Web Application
+
+## Overview
+Budgetly is a modern web application designed to empower users in managing their personal finances effectively. Whether you're tracking income and expenses, setting financial goals, or analyzing spending patterns, Budgetly provides an intuitive interface to help you stay on top of your financial health. Built with advanced technologies, this application offers a seamless experience for both individual users and developers looking to explore its codebase.
+
+## What Does Budgetly Do?
+- **Income and Expense Tracking**: Record and categorize transactions to monitor your cash flow in real-time.
+- **Financial Goal Setting**: Set and track progress toward savings goals like an emergency fund or a major purchase (e.g., a car down payment).
+- **Analytics Dashboard**: Visualize your financial data with interactive charts, including income vs. expenses and goal progress, to gain insights into your spending habits.
+- **Offline Support**: Access dummy data when offline, ensuring usability during network disruptions.
+- **User Authentication**: Secure login system to protect your financial data, with a test profile available for exploration.
+
+## Live Links
+- **Frontend**: The live version of the Budgetly frontend is hosted at [https://budgetly-finance-app.netlify.app/](https://budgetly-finance-app.netlify.app/). Visit this link to explore the application in action.
+
